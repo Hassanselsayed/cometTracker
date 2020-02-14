@@ -7,6 +7,37 @@
 </head>
 <body>
     
+    <header>
+        <div class="headerTextbox">
+            <h1>Comet Tracker</h1>
+            <h2>Track comets around our Solar System</h2>
+        </div>
+    </header>
+
+    <main>
+        <fieldset>
+            <form action="">
+                <label for="body">Select</label>
+                <select name="body" id="body">
+                    <option selected disabled>Body</option>
+                    <option value="Earth">Earth</option>
+                    <option value="Moon">Moon</option>
+                    <option value="Merc">Mercury</option>
+                    <option value="Venus">Venus</option>
+                    <option value="Mars">Mars</option>
+                    <option value="Juptr">Jupiter</option>
+                    <option value="Satrn">Saturn</option>
+                    <option value="Urnus">Uranus</option>
+                    <option value="Neptn">Neptune</option>
+                    <option value="Pluto">Pluto</option>
+                </select>
+            </form>
+        </fieldset>
+
+        <div class="closestObjFlex">
+            <!-- objects will be added dynamically here -->
+        </div>
+    </main>
 
     <script src='https://code.jquery.com/jquery-3.4.0.min.js' integrity='sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=' crossorigin='anonymous'></script>
     <script src="script.js"></script>
