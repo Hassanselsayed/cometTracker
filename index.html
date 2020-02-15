@@ -3,35 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Odibee+Sans|Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+
     <title>Comet Tracker</title>
 </head>
 <body>
     
     <header>
-        <div class="headerTextbox">
-            <h1>Comet Tracker</h1>
-            <h2>Track comets around our Solar System</h2>
+        <div class="wrapper">
+            <div class="headerTextbox">
+                <h1>Comet Tracker</h1>
+                <h2>Track comets around our Solar System</h2>
+            </div>
         </div>
     </header>
 
     <main>
-        <fieldset>
-            <form action="">
-                <label for="body">Select</label>
-                <select name="body" id="body">
-                    <option selected="selected" disabled>Body</option>
-                    <option value="Earth">Earth</option>
-                    <option value="Moon">Moon</option>
-                    <option value="Merc">Mercury</option>
-                    <option value="Venus">Venus</option>
-                    <option value="Mars">Mars</option>
-                    <option value="Juptr">Jupiter</option>
-                    <option value="Satrn">Saturn</option>
-                    <option value="Urnus">Uranus</option>
-                    <option value="Neptn">Neptune</option>
-                </select>
-            </form>
-        </fieldset>
+        <div class="wrapper">
+            <fieldset>
+                <form action="">
+                    <label for="body">Select</label>
+                    <select name="body" id="body">
+                        <option selected="selected" disabled>Body</option>
+                        <option value="Earth">Earth</option>
+                        <option value="Moon">Moon</option>
+                        <option value="Merc">Mercury</option>
+                        <option value="Venus">Venus</option>
+                        <option value="Mars">Mars</option>
+                        <option value="Juptr">Jupiter</option>
+                        <option value="Satrn">Saturn</option>
+                        <option value="Urnus">Uranus</option>
+                        <option value="Neptn">Neptune</option>
+                    </select>
+                </form>
+            </fieldset>
+        </div>
 
         <div class="closestObjFlex">
             <!-- objects will be added dynamically here -->
