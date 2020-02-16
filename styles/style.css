@@ -273,6 +273,12 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  background-image: url(../assets/image_from_ios.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -293,6 +299,7 @@ header h1 {
   letter-spacing: 5px;
   font-size: 60px;
   font-size: 6rem;
+  color: #f1fcfc;
 }
 
 header h2 {
@@ -300,6 +307,7 @@ header h2 {
   letter-spacing: 1px;
   font-size: 30px;
   font-size: 3rem;
+  color: #40e0d0;
 }
 
 fieldset {
@@ -308,6 +316,7 @@ fieldset {
   font-size: 20px;
   font-size: 2rem;
   border: 2px solid #40e0d0;
+  color: #f1fcfc;
 }
 
 .closestObjFlex ul li {

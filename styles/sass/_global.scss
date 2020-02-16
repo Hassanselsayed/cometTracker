@@ -38,16 +38,24 @@ html{
     font-size: 62.5%;
 }
 
+body{
+    background-image: url(../assets/image_from_ios.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 // header styles
 
 header{
     h1{
         @include primaryFont();
         @include fontSize(60);
+        color: $primaryWhite;
     }
     h2{
         @include secondaryFont();
         @include fontSize(30);
+        color: $accent;
     }
     @include centerFlex;
     text-align: center;
@@ -58,6 +66,7 @@ fieldset{
     @include secondaryFont();
     @include fontSize(20);
     border: 2px solid $accent;
+    color: $primaryWhite;
 }
 
 .closestObjFlex ul li{
