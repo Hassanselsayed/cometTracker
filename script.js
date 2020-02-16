@@ -9,6 +9,9 @@ cometApp.commaSeparateNumber = function(val) {
     return val;
 };
 
+const userInputDate = $('#date').val;
+console.log(userInputDate);
+
 // select element listener
 cometApp.selectListener = function() {
     $('.closestObjFlex').empty();
@@ -16,6 +19,7 @@ cometApp.selectListener = function() {
     const $userChoiceVal = $userChoice.val();
 
     cometApp.ajaxCall($userChoice, $userChoiceVal);
+
 };
 
 // callback function to be used in the .filter method
@@ -32,7 +36,8 @@ cometApp.ajaxCall = function(planetName, planetValue) {
         dataType: 'json',
         data: {
             fullname: 'true',
-            body: planetValue
+            body: planetValue,
+            // date-min: userInputDate,
         } 
     }).then(function(result) {
         console.log(result);
