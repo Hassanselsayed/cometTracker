@@ -86,8 +86,3 @@ cometApp.init = function () {
 $(() => {
     cometApp.init();
 });
-
-// invoiceApp.init = () => {
-//     $('ol').on('click', '#remove', invoiceApp.removeItemListener);
-//     $('form.addingItem').on('submit', invoiceApp.formListener);
-// };
