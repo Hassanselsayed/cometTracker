@@ -21,15 +21,14 @@ $primaryWhite: #f1fcfc;
 
 // font
 @mixin fontSize($sizeValue){
-	font-size: $sizeValue * 1px;
+	// font-size: $sizeValue * 1px;
     font-size: ($sizeValue/10) * 1rem;
 }
 
 @mixin primaryFont(){
 	font-family: $primaryFont;
-	  text-transform: uppercase;
-	  letter-spacing: 5px;
-	  
+	text-transform: uppercase;
+	letter-spacing: 5px;
 }
 
 @mixin secondaryFont(){

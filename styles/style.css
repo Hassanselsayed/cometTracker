@@ -242,7 +242,8 @@ p,
 h1,
 h2,
 h3,
-h4 {
+ul,
+li {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -297,7 +298,6 @@ header h1 {
   font-family: "Odibee Sans", cursive;
   text-transform: uppercase;
   letter-spacing: 5px;
-  font-size: 60px;
   font-size: 6rem;
   color: #f1fcfc;
 }
@@ -305,7 +305,6 @@ header h1 {
 header h2 {
   font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
-  font-size: 30px;
   font-size: 3rem;
   color: #40e0d0;
 }
@@ -313,15 +312,75 @@ header h2 {
 fieldset {
   font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
-  font-size: 20px;
   font-size: 2rem;
   border: 2px solid #40e0d0;
   color: #f1fcfc;
 }
 
+.closestObjFlex {
+  padding-top: 5vh;
+}
+
+.closestObjFlex h3 {
+  color: #f1fcfc;
+  font-size: 2.5rem;
+}
+
+.closestObjFlex ul {
+  margin-top: 2vh;
+  border-left: 2px solid #f1fcfc;
+  border-right: 2px solid #f1fcfc;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.closestObjFlex ul li:first-child::before,
+.closestObjFlex ul li:first-child::after,
+.closestObjFlex ul li:last-child::before,
+.closestObjFlex ul li:last-child::after {
+  content: '';
+  width: 2vw;
+}
+
+.closestObjFlex ul li:first-child::before,
+.closestObjFlex ul li:first-child::after {
+  border-top: 2px solid #f1fcfc;
+}
+
+.closestObjFlex ul li:first-child::after,
+.closestObjFlex ul li:last-child::after {
+  float: right;
+}
+
+.closestObjFlex ul li:first-child::before,
+.closestObjFlex ul li:last-child::before {
+  float: left;
+}
+
+.closestObjFlex ul li:last-child::before,
+.closestObjFlex ul li:last-child::after {
+  border-bottom: 2px solid #f1fcfc;
+  position: absolute;
+  bottom: 0;
+}
+
+.closestObjFlex ul li:last-child::after {
+  right: 0;
+}
+
+.closestObjFlex ul li:last-child::before {
+  left: 0;
+}
+
+.closestObjFlex ul li:not(:first-child) {
+  padding: 0 2vw;
+}
+
 .closestObjFlex ul li {
   font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
-  font-size: 20px;
   font-size: 2rem;
+  color: #f1fcfc;
+  position: relative;
 }

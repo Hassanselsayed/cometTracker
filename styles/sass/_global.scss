@@ -6,7 +6,8 @@ p,
 h1,
 h2,
 h3,
-h4{
+ul,
+li{
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -30,8 +31,8 @@ a{
 /* base styling */
 
 img{
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
 
 html{
@@ -61,7 +62,7 @@ header{
     text-align: center;
     padding: 5%;
 }
-
+// form styles
 fieldset{
     @include secondaryFont();
     @include fontSize(20);
@@ -69,8 +70,60 @@ fieldset{
     color: $primaryWhite;
 }
 
-.closestObjFlex ul li{
-    @include secondaryFont();
-    @include fontSize(20);
+// dynamic elements' styles
+.closestObjFlex {
+    padding-top: 5vh;
+    h3 {
+        color: $primaryWhite;
+        @include fontSize(25);
+    }
+    ul {
+        margin-top: 2vh;
+        border-left: 2px solid $primaryWhite;
+        border-right: 2px solid $primaryWhite;
+        width: fit-content;
+
+        // adding square brackets to each ul dynamically added to the webpage
+        li:first-child::before,
+        li:first-child::after,
+        li:last-child::before,
+        li:last-child::after {
+            content: '';
+            width: 2vw; 
+        }
+        li:first-child::before,
+        li:first-child::after {
+            border-top: 2px solid $primaryWhite;
+        }
+        li:first-child::after,
+        li:last-child::after {
+            float: right;
+        }
+        li:first-child::before,
+        li:last-child::before {
+            float: left;
+        }
+        li:last-child::before,
+        li:last-child::after {
+            border-bottom: 2px solid $primaryWhite;
+            position: absolute;
+            bottom: 0;
+        }
+        li:last-child::after {
+            right: 0;
+        }
+        li:last-child::before {
+            left: 0;
+        }
+        li:not(:first-child) {
+            padding: 0 2vw;
+        }
+        li{
+            @include secondaryFont();
+            @include fontSize(20);
+            color: $primaryWhite;
+            position: relative;
+        }
+    } 
 }
 
