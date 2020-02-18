@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,9 @@
 
     <title>Comet Tracker</title>
 </head>
+
 <body>
-    
+
     <header>
         <div class="wrapper">
             <div class="headerTextbox">
@@ -38,16 +40,23 @@
                         <option value="Neptn">Neptune</option>
                     </select>
 
-                    <label for="date">date:</label>
-                    <input type="date" name="date" id="date">
-                    </div>
-                    <input type="submit" class="submitButton" value="enter">
-                    <!-- end of inputFlex  -->
+                    <!-- start of datesSearchFlex -->
+                    <div class="datesSearchFlex">
+
+                        <label for="min-date">Search Past Dates:</label>
+                        <input type="date" name="min-date" id="min-date">
+
+                        <label for="date">Search Future Dates:</label>
+                        <input type="date" name="max-date" id="max-date">
+
+                        <input type="submit" class="submitButton" value="enter">
+
+                        <!-- end of datesSearchFlex -->
                     </div>
 
                 </form>
             </fieldset>
-        <!-- wrapper end -->
+            <!-- wrapper end -->
         </div>
 
         <div class="closestObjFlex">
@@ -55,7 +64,9 @@
         </div>
     </main>
 
-    <script src='https://code.jquery.com/jquery-3.4.0.min.js' integrity='sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=' crossorigin='anonymous'></script>
+    <script src='https://code.jquery.com/jquery-3.4.0.min.js'
+        integrity='sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=' crossorigin='anonymous'></script>
     <script src="script.js"></script>
 </body>
+
 </html>
