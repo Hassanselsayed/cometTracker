@@ -1,3 +1,4 @@
+
 // app object
 const cometApp = {};
 
@@ -9,18 +10,36 @@ cometApp.commaSeparateNumber = function(val) {
     return val;
 };
 
-const userInputDate = $('#date').val;
-console.log(userInputDate);
+// event listeners
 
-// select element listener
+// collect planet selection 
 cometApp.selectListener = function() {
     $('.closestObjFlex').empty();
-    const $userChoice = $(this).children("option:selected");
-    const $userChoiceVal = $userChoice.val();
+    const userChoice = $(this).children("option:selected").text();
+    const userChoiceVal = $('#body').val();
 
-    cometApp.ajaxCall($userChoice, $userChoiceVal);
+    cometApp.ajaxCall(userChoice, userChoiceVal);
 
 };
+
+// collect user input date
+cometApp.$minDateInput = $('#min-date');
+cometApp.$maxDateInput = $('#max-date');
+
+cometApp.formListener = function(e){
+    e.preventDefault();
+    const userInputMinDate = cometApp.$minDateInput.val();
+    console.log(cometApp.userInputMinDate);
+    const userInputMaxDate = cometApp.$maxDateInput.val();
+
+    const userChoice = $(this).children("option:selected").text();
+    const userChoiceVal = $('#body').val();
+
+    cometApp.ajaxCall(userChoice, userChoiceVal, userInputMinDate);
+
+    }
+
+
 
 // callback function to be used in the .filter method
 cometApp.findIndex = function(value, index) {
@@ -28,21 +47,23 @@ cometApp.findIndex = function(value, index) {
 };
 
 // AJAX call function
-cometApp.ajaxCall = function(planetName, planetValue) {
+cometApp.ajaxCall = function(planetName, planetValue, minDate = 'now') {
     // start of AJAX call
+    console.log(planetValue);
     $.ajax({
-        url: 'https://ssd-api.jpl.nasa.gov/cad.api',
+        url: `https://ssd-api.jpl.nasa.gov/cad.api`,
         method: 'GET',
         dataType: 'json',
         data: {
-            fullname: 'true',
+            fullname: true,
             body: planetValue,
-            // date-min: userInputDate,
+            'date-min': minDate,
         } 
+
     }).then(function(result) {
         console.log(result);
         if (result.count === '0') {
-            console.log(`sorry, no comets around ${planetName.text()} now`);
+            console.log(`sorry, no comets around ${planetName} now`);
         } else {
 
             // creating a new filtered array using the .filter method on the result.data array to get the first 3 values only
@@ -66,7 +87,7 @@ cometApp.ajaxCall = function(planetName, planetValue) {
                 <ul>
                     <li>Name: ${$filteredObjects[i][11]}</li>
                     <li>Time of closest approach: ${$filteredObjects[i][3]}</li>
-                    <li>Distance from ${planetName.text()}: ${$commaSeperatedDistance} km </li>
+                    <li>Distance from ${planetName}: ${$commaSeperatedDistance} km </li>
                 </ul>
                 `;
                 $('.closestObjFlex').append(htmlToAppend);
@@ -75,12 +96,15 @@ cometApp.ajaxCall = function(planetName, planetValue) {
         // end of else condition
         }
     // end of .then method
-    });
+    })
+    .fail(err => console.log(err))
 // end of AJAX call function
 };
 
 cometApp.init = function () {
     $('select').change(cometApp.selectListener);
+    $('form').on('submit', cometApp.formListener);
+
 }
     
 $(() => {
