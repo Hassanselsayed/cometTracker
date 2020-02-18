@@ -63,19 +63,35 @@ header{
     padding: 5%;
 }
 // form styles
+.fieldsetFlex {
+    display: flex;
+    fieldset:first-child {
+        margin-right: 20px;
+        width: calc(30% - 10px);
+    }
+    fieldset:last-child {
+        width: calc(70% - 10px);
+    }
+}
+
 fieldset{
     @include secondaryFont();
     @include fontSize(20);
     border: 2px solid $accent;
     color: $primaryWhite;
 }
-
+.datesSearchFlex {
+    display: flex;
+}
 // dynamic elements' styles
 .closestObjFlex {
     padding-top: 5vh;
+    margin-left: 25px;
     h3 {
-        color: $primaryWhite;
+        color: $accent;
         @include fontSize(25);
+        @include primaryFont();
+        
     }
     ul {
         margin-top: 2vh;
@@ -126,5 +142,20 @@ fieldset{
             position: relative;
         }
     } 
+}
+
+.submitButton {
+    background: none;
+    border: 4px solid $primaryWhite;
+    @include secondaryFont();
+    text-transform: uppercase;
+    color: $primaryWhite;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+.submitButton:hover,
+.submitButton:focus {
+    background-color: rgba(64, 224, 208, 0.5);
 }
 

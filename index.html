@@ -23,9 +23,10 @@
 
     <main>
         <!-- wrapper start -->
-        <div class="wrapper">
-            <fieldset>
-                <form action="">
+        <div class="wrapper fieldsetFlex">
+
+            <div class="bodySearch">
+                <fieldset>
                     <label for="body">Select</label>
                     <select name="body" id="body">
                         <option selected="selected" disabled>Body</option>
@@ -39,33 +40,43 @@
                         <option value="Urnus">Uranus</option>
                         <option value="Neptn">Neptune</option>
                     </select>
+                </fieldset>
+            <div class="closestObjFlex">
+                <!-- objects will be added dynamically here -->
+            </div>
+            </div>
+        
+            <!-- start of dateSearchFlex -->
+            <div class="dateSearchFlex">
+                <fieldset>
+                    <form action="">
+                        <!-- start of datesSearchFlex -->
+                        <div class="datesSearchFlex">
+                            <div class="dateFlex">
+                                <label for="min-date">Search Past Dates:</label>
+                                <input type="date" name="min-date" id="min-date">
+                            </div>
+        
+                            <div class="dateFlex">
+                                <label for="date">Search Future Dates:</label>
+                                <input type="date" name="max-date" id="max-date">
+                            </div>
+        
+                            <input type="submit" class="submitButton" value="enter">
+        
+                            <!-- end of datesSearchFlex -->
+                        </div>
+        
+                    </form>
+                </fieldset>
+                <!-- end of dateSearchFlex -->
+                
+                <div class="dateSearchResults">
+                    <!-- dates search results will be added dynamically here -->
+                </div>
+            </div>
 
-                    <!-- start of datesSearchFlex -->
-                    <div class="datesSearchFlex">
-
-                        <label for="min-date">Search Past Dates:</label>
-                        <input type="date" name="min-date" id="min-date">
-
-                        <label for="date">Search Future Dates:</label>
-                        <input type="date" name="max-date" id="max-date">
-
-                        <input type="submit" class="submitButton" value="enter">
-<<<<<<< HEAD
-
-                        <!-- end of datesSearchFlex -->
-=======
-                        
-                    <!-- end of datesSearchFlex -->
->>>>>>> d5c0408dd5bb3e25312117ec361ab213058ff271
-                    </div>
-
-                </form>
-            </fieldset>
             <!-- wrapper end -->
-        </div>
-
-        <div class="closestObjFlex">
-            <!-- objects will be added dynamically here -->
         </div>
     </main>
 

@@ -309,6 +309,21 @@ header h2 {
   color: #40e0d0;
 }
 
+.fieldsetFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.fieldsetFlex fieldset:first-child {
+  margin-right: 20px;
+  width: calc(30% - 10px);
+}
+
+.fieldsetFlex fieldset:last-child {
+  width: calc(70% - 10px);
+}
+
 fieldset {
   font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
@@ -317,13 +332,23 @@ fieldset {
   color: #f1fcfc;
 }
 
+.datesSearchFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .closestObjFlex {
   padding-top: 5vh;
+  margin-left: 25px;
 }
 
 .closestObjFlex h3 {
-  color: #f1fcfc;
+  color: #40e0d0;
   font-size: 2.5rem;
+  font-family: "Odibee Sans", cursive;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 .closestObjFlex ul {
@@ -383,4 +408,22 @@ fieldset {
   font-size: 2rem;
   color: #f1fcfc;
   position: relative;
+}
+
+.submitButton {
+  background: none;
+  border: 4px solid #f1fcfc;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #f1fcfc;
+  padding: 5px 10px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+}
+
+.submitButton:hover,
+.submitButton:focus {
+  background-color: rgba(64, 224, 208, 0.5);
 }
