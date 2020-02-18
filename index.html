@@ -24,12 +24,16 @@
     <main>
         <!-- wrapper start -->
         <div class="wrapper fieldsetFlex">
+            <div class="welcome">
+                <p>Welcome to comet tracker!  Select a planet and see cloest 3 objects that have pasted by from today up that 60 days from now</p>
+            </div>
 
+            <!-- body search starts  -->
             <div class="bodySearch">
                 <fieldset>
                     <label for="body">Select</label>
                     <select name="body" id="body">
-                        <option selected="selected" disabled>Body</option>
+                        <option selected="selected" disabled>Planet</option>
                         <option value="Earth">Earth</option>
                         <option value="Moon">Moon</option>
                         <option value="Merc">Mercury</option>
@@ -41,9 +45,11 @@
                         <option value="Neptn">Neptune</option>
                     </select>
                 </fieldset>
-            <div class="closestObjFlex">
-                <!-- objects will be added dynamically here -->
-            </div>
+                <div class="closestObjFlex">
+                    <!-- objects will be added dynamically here -->
+                </div>
+
+            <!-- body search ends  -->
             </div>
         
             <!-- start of dateSearchFlex -->

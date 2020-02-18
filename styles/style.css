@@ -309,12 +309,6 @@ header h2 {
   color: #40e0d0;
 }
 
-.fieldsetFlex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .fieldsetFlex fieldset:first-child {
   margin-right: 20px;
   width: calc(30% - 10px);
