@@ -67,9 +67,11 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
 
             const htmlToAppend = `
                 <ul>
-                    <li><p>Name: ${$filteredObjects[i][11]}</p></li>
-                    <li><p>Time of closest approach: ${$filteredObjects[i][3]}</p></li>
-                    <li><p>Distance from ${planetName}: ${$commaSeperatedDistance} km </p></li>
+                    <li>
+                        <p>Name: ${$filteredObjects[i][11]}</p>
+                        <p>Time of closest approach: ${$filteredObjects[i][3]}</p></li>
+                        <p>Distance from ${planetName}: ${$commaSeperatedDistance} km </p>
+                    </li>
                 </ul>
                 `;
             $('.closestObjFlex').append(htmlToAppend);
