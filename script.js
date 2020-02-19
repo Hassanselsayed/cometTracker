@@ -14,7 +14,7 @@ cometApp.commaSeparateNumber = function(val) {
 // collect planet selection 
 cometApp.selectListener = function() {
     $('.closestObjFlex').empty();
-    const userChoice = $(this).children("option:selected").text();
+    const userChoice = $(this).children('option:selected').text();
     const userChoiceVal = $('#body').val();
 
     cometApp.ajaxCall(userChoice, userChoiceVal);
@@ -26,14 +26,18 @@ cometApp.$maxDateInput = $('#max-date');
 
 cometApp.formListener = function(e){
     e.preventDefault();
-    $('.dateSearchResults').empty();
-    const userInputMinDate = cometApp.$minDateInput.val();
-    const userInputMaxDate = cometApp.$maxDateInput.val();
-
-    const userChoice = $(this).children("option:selected").text();
-    const userChoiceVal = $('#body').val();   
-
-    cometApp.ajaxCall(userChoice, userChoiceVal, userInputMinDate, userInputMaxDate);
+    if ($('option:selected').val() !== 'planet') {
+        $('.dateSearchResults').empty();
+        const userInputMinDate = cometApp.$minDateInput.val();
+        const userInputMaxDate = cometApp.$maxDateInput.val();
+    
+        const userChoice = $(this).children("option:selected").text();
+        const userChoiceVal = $('#body').val();   
+    
+        cometApp.ajaxCall(userChoice, userChoiceVal, userInputMinDate, userInputMaxDate);
+    } else {
+        alert('please choose a planet first');
+    }
 }
 
 
@@ -63,9 +67,9 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
 
             const htmlToAppend = `
                 <ul>
-                    <li>Name: ${$filteredObjects[i][11]}</li>
-                    <li>Time of closest approach: ${$filteredObjects[i][3]}</li>
-                    <li>Distance from ${planetName}: ${$commaSeperatedDistance} km </li>
+                    <li><p>Name: ${$filteredObjects[i][11]}</p></li>
+                    <li><p>Time of closest approach: ${$filteredObjects[i][3]}</p></li>
+                    <li><p>Distance from ${planetName}: ${$commaSeperatedDistance} km </p></li>
                 </ul>
                 `;
             $('.closestObjFlex').append(htmlToAppend);
@@ -84,9 +88,9 @@ cometApp.displayDateResults = function(result, minDate, maxDate) {
 
 
         const htmlToAppend = `
-                <ul>
-                    <li>Name: ${$filteredObjects[i][11]}</li>
-                    <li>Time of closest approach: ${$filteredObjects[i][3]}</li>
+                <ul style="color:white;">
+                    <li><p>Name: ${$filteredObjects[i][11]}</p></li>
+                    <li><p>Time of closest approach: ${$filteredObjects[i][3]}</p></li>
                 </ul>
                 `;
         $('.dateSearchResults').append(htmlToAppend);
