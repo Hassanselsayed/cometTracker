@@ -57,12 +57,44 @@ header{
         @include secondaryFont();
         @include fontSize(20);
         color: $accent;
+        text-transform: uppercase;
+
     }
     @include centerFlex;
     text-align: center;
     padding: 5%;
 }
+
+// main styles/alignment
+.fieldsetFlex{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+
+}
+
 // form styles
+
+h3 {
+    color: $accent;
+    @include fontSize(25);
+    @include primaryFont();
+}
+
+p{
+    color: $accent;
+    @include secondaryFont;
+    @include fontSize(16);
+
+}
+
+.planetSearchTextBox,
+.datesSearchTextBox{
+    @include centerFlex;
+    flex-direction: column;
+}
+
 .fieldsetFlex {
     fieldset:first-child {
         margin-right: 20px;
@@ -86,12 +118,7 @@ fieldset{
 .closestObjFlex {
     padding-top: 5vh;
     margin-left: 25px;
-    h3 {
-        color: $accent;
-        @include fontSize(25);
-        @include primaryFont();
-        
-    }
+
     ul {
         margin-top: 2vh;
         border-left: 2px solid $primaryWhite;

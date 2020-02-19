@@ -307,6 +307,49 @@ header h2 {
   letter-spacing: 1px;
   font-size: 2rem;
   color: #40e0d0;
+  text-transform: uppercase;
+}
+
+.fieldsetFlex {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  grid-gap: 30px;
+}
+
+h3 {
+  color: #40e0d0;
+  font-size: 2.5rem;
+  font-family: "Odibee Sans", cursive;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+p {
+  color: #40e0d0;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+}
+
+.planetSearchTextBox,
+.datesSearchTextBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .fieldsetFlex fieldset:first-child {
@@ -335,14 +378,6 @@ fieldset {
 .closestObjFlex {
   padding-top: 5vh;
   margin-left: 25px;
-}
-
-.closestObjFlex h3 {
-  color: #40e0d0;
-  font-size: 2.5rem;
-  font-family: "Odibee Sans", cursive;
-  text-transform: uppercase;
-  letter-spacing: 5px;
 }
 
 .closestObjFlex ul {
