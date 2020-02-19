@@ -1,4 +1,3 @@
-
 // app object
 const cometApp = {};
 
@@ -19,7 +18,6 @@ cometApp.selectListener = function() {
     const userChoiceVal = $('#body').val();
 
     cometApp.ajaxCall(userChoice, userChoiceVal);
-
 };
 
 // collect user input date
@@ -28,10 +26,9 @@ cometApp.$maxDateInput = $('#max-date');
 
 cometApp.formListener = function(e){
     e.preventDefault();
+    $('.dateSearchResults').empty();
     const userInputMinDate = cometApp.$minDateInput.val();
-    console.log(userInputMinDate);
     const userInputMaxDate = cometApp.$maxDateInput.val();
-    console.log(userInputMaxDate);
 
     const userChoice = $(this).children("option:selected").text();
     const userChoiceVal = $('#body').val();   
@@ -41,18 +38,14 @@ cometApp.formListener = function(e){
 
 
 
-// callback function to be used in the .filter method
-cometApp.findIndex = function(value, index) {
-    return index <= 2;
-};
+
 cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) {
     if (result.count === '0') {
         console.log(`sorry, no comets around ${planetName} now`);
     } else {
 
-        // creating a new filtered array using the .filter method on the result.data array to get the first 3 values only
-        // refactor to array.slice
-        const $filteredObjects = result.data.filter(cometApp.findIndex);
+        // creating a new array containing the first 3 results of the original array
+        const $filteredObjects = result.data.slice(0, 3);
 
         // appending h3 to container div
         if (result.count === '1') {
@@ -80,10 +73,33 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
         });
         // end of else condition
     }
-};
+}
+
+cometApp.displayDateResults = function(result, minDate, maxDate) {
+    const $filteredObjects = result.data.slice(0, 15);
+    console.log($filteredObjects);
+
+    // looping over the new filtered array using the .forEach method
+    $filteredObjects.forEach(function (currentVal, i) {
+
+
+        const htmlToAppend = `
+                <ul>
+                    <li>Name: ${$filteredObjects[i][11]}</li>
+                    <li>Time of closest approach: ${$filteredObjects[i][3]}</li>
+                </ul>
+                `;
+        $('.dateSearchResults').append(htmlToAppend);
+        // end of forEach method
+    });
+
+    console.log(minDate);
+    console.log(maxDate);
+}
 
 
 // AJAX call function
+
 cometApp.ajaxCall = function(planetName, planetValue, minDate='now', maxDate='+60') {
     // start of AJAX call
     // console.log(planetValue);
@@ -102,9 +118,10 @@ cometApp.ajaxCall = function(planetName, planetValue, minDate='now', maxDate='+6
     }).then(function(result) {
         console.log(result);
         if(minDate === 'now') {
+            // do we need to pass planetValue?? discuss when project is done
             cometApp.displayDefaultBodyResults(result, planetName, planetValue);
         } else {
-
+            cometApp.displayDateResults(result, minDate, maxDate);
         }
 
     // end of .then method
