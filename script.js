@@ -36,7 +36,8 @@ cometApp.formListener = function(e){
     
         cometApp.ajaxCall(userChoice, userChoiceVal, userInputMinDate, userInputMaxDate);
     } else {
-        alert('please choose a planet first');
+        const errorToAppend = `<h3>please choose a planet first</h3>`;
+        $('.dateSearchResults').append(errorToAppend);
     }
 }
 
@@ -69,7 +70,7 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
                 <ul>
                     <li>
                         <p>Name: ${$filteredObjects[i][11]}</p>
-                        <p>Time of closest approach: ${$filteredObjects[i][3]}</p></li>
+                        <p>Approach date: ${$filteredObjects[i][3]}</p></li>
                         <p>Distance from ${planetName}: ${$commaSeperatedDistance} km </p>
                     </li>
                 </ul>
@@ -88,19 +89,24 @@ cometApp.displayDateResults = function(result, minDate, maxDate) {
     // looping over the new filtered array using the .forEach method
     $filteredObjects.forEach(function (currentVal, i) {
 
+        const $convertedDistance = $filteredObjects[i][4] * 149597871;
+        const $commaSeperatedDistance = cometApp.commaSeparateNumber($convertedDistance.toFixed(0));
 
         const htmlToAppend = `
                 <ul style="color:white;">
-                    <li><p>Name: ${$filteredObjects[i][11]}</p></li>
-                    <li><p>Time of closest approach: ${$filteredObjects[i][3]}</p></li>
+                    <li>
+                        <p>Name: ${$filteredObjects[i][11]}</p>
+                        <p>Approach date: ${$filteredObjects[i][3]}</p>
+                        <p>Distance: ${$commaSeperatedDistance} km</p>
+                    </li>
                 </ul>
                 `;
         $('.dateSearchResults').append(htmlToAppend);
         // end of forEach method
     });
-
-    console.log(minDate);
-    console.log(maxDate);
+    $('select').change(function() {
+        $('.dateSearchResults').empty();
+    });
 }
 
 
