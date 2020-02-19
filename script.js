@@ -11,19 +11,26 @@ cometApp.commaSeparateNumber = function(val) {
 
 // event listeners
 
-// collect planet selection 
+// planet selection listener
 cometApp.selectListener = function() {
     $('.closestObjFlex').empty();
     const userChoice = $(this).children('option:selected').text();
     const userChoiceVal = $('#body').val();
 
-    cometApp.ajaxCall(userChoice, userChoiceVal);
+    const pendingRespone = cometApp.ajaxCall(userChoice, userChoiceVal); 
+    
+    pendingRespone.then(function(result) {
+    
+        cometApp.displayDefaultBodyResults(result, userChoice, userChoiceVal);
+
+    })
 };
 
 // collect user input date
 cometApp.$minDateInput = $('#min-date');
 cometApp.$maxDateInput = $('#max-date');
 
+// date form listener 
 cometApp.formListener = function(e){
     e.preventDefault();
     if ($('option:selected').val() !== 'planet') {
@@ -33,20 +40,28 @@ cometApp.formListener = function(e){
     
         const userChoice = $(this).children("option:selected").text();
         const userChoiceVal = $('#body').val();   
+
+        const minDate = userInputMinDate ? userInputMinDate : 'now';
+        const maxDate = userInputMaxDate ? userInputMaxDate : '+60';
     
-        cometApp.ajaxCall(userChoice, userChoiceVal, userInputMinDate, userInputMaxDate);
-    } else {
+        const pendingRespone = cometApp.ajaxCall(userChoice, userChoiceVal, minDate, maxDate); 
+    
+        pendingRespone.then(function(result) {
+        cometApp.displayDateResults(result, minDate, maxDate);
+    
+    })
+        
+    }else{
         const errorToAppend = `<h3>please choose a planet first</h3>`;
         $('.dateSearchResults').append(errorToAppend);
     }
 }
 
-
-
-
+// Display planet object search  
 cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) {
     if (result.count === '0') {
-        console.log(`sorry, no comets around ${planetName} now`);
+        const htmlToAppend = `<h3>No results for ${planetName} at this time</h3>`;
+        $('.closestObjFlex').append(htmlToAppend);
     } else {
 
         // creating a new array containing the first 3 results of the original array
@@ -82,6 +97,7 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
     }
 }
 
+// Display date search results 
 cometApp.displayDateResults = function(result, minDate, maxDate) {
     const $filteredObjects = result.data.slice(0, 15);
     console.log($filteredObjects);
@@ -93,14 +109,14 @@ cometApp.displayDateResults = function(result, minDate, maxDate) {
         const $commaSeperatedDistance = cometApp.commaSeparateNumber($convertedDistance.toFixed(0));
 
         const htmlToAppend = `
-                <ul style="color:white;">
-                    <li>
-                        <p>Name: ${$filteredObjects[i][11]}</p>
-                        <p>Approach date: ${$filteredObjects[i][3]}</p>
-                        <p>Distance: ${$commaSeperatedDistance} km</p>
-                    </li>
-                </ul>
-                `;
+            <ul style="color:white;">
+                <li>
+                    <p>Name: ${$filteredObjects[i][11]}</p>
+                    <p>Approach date: ${$filteredObjects[i][3]}</p>
+                    <p>Distance: ${$commaSeperatedDistance} km</p>
+                </li>
+            </ul>
+            `;
         $('.dateSearchResults').append(htmlToAppend);
         // end of forEach method
     });
@@ -111,48 +127,25 @@ cometApp.displayDateResults = function(result, minDate, maxDate) {
 
 
 // AJAX call function
-
-cometApp.ajaxCall = function(planetName, planetValue, minDate='now', maxDate='+60') {
+cometApp.ajaxCall = function(planetName, planetValue, minDate, maxDate) {
     // start of AJAX call
-    // console.log(planetValue);
-    $.ajax({
+    return $.ajax({
         url: `https://ssd-api.jpl.nasa.gov/cad.api`,
         method: 'GET',
         dataType: 'json',
         data: {
             fullname: true,
             body: planetValue,
-            // if min date is has a value, return the left value, else return the right value
-            // ternary operator
-            'date-min': minDate ? minDate : 'now',
-            'date-max': maxDate ? maxDate : '+60'
+            'date-min': minDate,
+            'date-max': maxDate,
         } 
-    }).then(function(result) {
-        console.log(result);
-        if(minDate === 'now') {
-            // do we need to pass planetValue?? discuss when project is done
-            cometApp.displayDefaultBodyResults(result, planetName, planetValue);
-        } else {
-            cometApp.displayDateResults(result, minDate, maxDate);
-        }
-
-    // end of .then method
     })
-    .fail(err => console.log(err))
-// end of AJAX call function
 };
 
-// add getTime + number of milliseconds in a day
-// create a date object 
-// getFull year on the object
-// getMonth on the object
-// getDate on the object
-// 
 
 cometApp.init = function () {
     $('select').change(cometApp.selectListener);
     $('form').on('submit', cometApp.formListener);
-
 }
     
 $(() => {

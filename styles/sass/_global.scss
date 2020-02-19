@@ -164,21 +164,21 @@ fieldset{
     } 
 }
 
-ul::after{
-    position: absolute;
-    content: '   ';
-    width: 10%;
-    height: 2%;
-    background-color: $accent;
-}
+// ul::after{
+//     position: absolute;
+//     content: '   ';
+//     width: 10%;
+//     height: 2%;
+//     background-color: $accent;
+// }
 
-ul::before{
-    position: absolute;
-    content: '   ';
-    width: 2%;
-    height: 10%;
-    background-color: $accent;
-}
+// ul::before{
+//     position: absolute;
+//     content: '   ';
+//     width: 2%;
+//     height: 10%;
+//     background-color: $accent;
+// }
 
 .submitButton {
     background: none;

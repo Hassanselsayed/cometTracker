@@ -391,22 +391,6 @@ fieldset {
   position: relative;
 }
 
-ul::after {
-  position: absolute;
-  content: '   ';
-  width: 10%;
-  height: 2%;
-  background-color: #40e0d0;
-}
-
-ul::before {
-  position: absolute;
-  content: '   ';
-  width: 2%;
-  height: 10%;
-  background-color: #40e0d0;
-}
-
 .submitButton {
   background: none;
   border: 4px solid #f1fcfc;
