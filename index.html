@@ -26,7 +26,11 @@
         <div class="wrapper fieldsetFlex">
 
             <!-- body search starts  -->
-            <div class="bodySearch">
+            <div class="planetSearchFlex">
+                <div class="planetSearchTextBox">
+                    <h3>step one: planet/satalite search</h3>
+                    <p>here you can select a planet or moon and see threee current close approaches expected between now and the next 60 days</p>
+                </div>
                 <fieldset>
                     <label for="body">Select a Planet/Moon</label>
                     <select name="body" id="body">
@@ -47,11 +51,15 @@
                     <!-- objects will be added dynamically here -->
                 </div>
 
-            <!-- body search ends  -->
+            <!-- planetSearch ends  -->
             </div>
         
             <!-- start of dateSearchFlex -->
             <div class="dateSearchFlex">
+                <div class="dateSearchTextBox">
+                    <h3>step two: past/future close approaches</h3>
+                    <p>select dates in the past and/or future and see a list of the closest 15 recorded approaches from your selected planet/moon</p>
+                </div>
                 <fieldset>
                     <form action="">
                         <!-- start of datesSearchFlex -->
@@ -78,6 +86,7 @@
                 <div class="dateSearchResults">
                     <!-- dates search results will be added dynamically here -->
                 </div>
+            <!-- end of dateSearchFlex -->
             </div>
 
             <!-- wrapper end -->
