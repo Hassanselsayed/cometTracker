@@ -40,9 +40,10 @@ html{
 }
 
 body{
-    background-image: url(../assets/image_from_ios.jpg);
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.25), rgba(55, 42, 65, 0.7)), url(../assets/image_from_ios.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 // header styles
@@ -68,8 +69,8 @@ header{
 // main styles/alignment
 .fieldsetFlex{
     display: grid;
+    grid-template-columns: 40% 60%;
     grid-template-rows: auto;
-    grid-template-columns: 1fr 2fr;
     grid-gap: 30px;
 
 }
@@ -77,7 +78,7 @@ header{
 // form styles
 
 h3 {
-    color: $accent;
+    color: $primaryWhite;
     @include fontSize(25);
     @include primaryFont();
 }
@@ -85,7 +86,7 @@ h3 {
 p{
     color: $accent;
     @include secondaryFont;
-    @include fontSize(16);
+    @include fontSize(15);
 
 }
 
@@ -93,16 +94,6 @@ p{
 .datesSearchTextBox{
     @include centerFlex;
     flex-direction: column;
-}
-
-.fieldsetFlex {
-    fieldset:first-child {
-        margin-right: 20px;
-        width: calc(30% - 10px);
-    }
-    fieldset:last-child {
-        width: calc(70% - 10px);
-    }
 }
 
 fieldset{
@@ -116,51 +107,54 @@ fieldset{
 }
 // dynamic elements' styles
 .closestObjFlex {
-    padding-top: 5vh;
-    margin-left: 25px;
+    padding-top: 5%;
+    position: relative;
 
     ul {
-        margin-top: 2vh;
-        border-left: 2px solid $primaryWhite;
-        border-right: 2px solid $primaryWhite;
+        // margin-top: 2vh;
+        // border-left: 2px solid $primaryWhite;
+        // border-right: 2px solid $primaryWhite;
         
         width: fit-content;
+            li{
+                padding: 2%;
+            }
 
-        // adding square brackets to each ul dynamically added to the webpage
-        li:first-child::before,
-        li:first-child::after,
-        li:last-child::before,
-        li:last-child::after {
-            content: '';
-            width: 2vw; 
-        }
-        li:first-child::before,
-        li:first-child::after {
-            border-top: 2px solid $primaryWhite;
-        }
-        li:first-child::after,
-        li:last-child::after {
-            float: right;
-        }
-        li:first-child::before,
-        li:last-child::before {
-            float: left;
-        }
-        li:last-child::before,
-        li:last-child::after {
-            border-bottom: 2px solid $primaryWhite;
-            position: absolute;
-            bottom: 0;
-        }
-        li:last-child::after {
-            right: 0;
-        }
-        li:last-child::before {
-            left: 0;
-        }
-        li:not(:first-child) {
-            padding: 0 2vw;
-        }
+        // // adding square brackets to each ul dynamically added to the webpage
+        // li:first-child::before,
+        // li:first-child::after,
+        // li:last-child::before,
+        // li:last-child::after {
+        //     content: '';
+        //     width: 2vw; 
+        // }
+        // li:first-child::before,
+        // li:first-child::after {
+        //     border-top: 2px solid $primaryWhite;
+        // }
+        // li:first-child::after,
+        // li:last-child::after {
+        //     float: right;
+        // }
+        // li:first-child::before,
+        // li:last-child::before {
+        //     float: left;
+        // }
+        // li:last-child::before,
+        // li:last-child::after {
+        //     border-bottom: 2px solid $primaryWhite;
+        //     position: absolute;
+        //     bottom: 0;
+        // }
+        // li:last-child::after {
+        //     right: 0;
+        // }
+        // li:last-child::before {
+        //     left: 0;
+        // }
+        // li:not(:first-child) {
+        //     padding: 0 2vw;
+        // }
         li{
             @include secondaryFont();
             @include fontSize(20);
@@ -168,6 +162,22 @@ fieldset{
             position: relative;
         }
     } 
+}
+
+ul::after{
+    position: absolute;
+    content: '   ';
+    width: 10%;
+    height: 2%;
+    background-color: $accent;
+}
+
+ul::before{
+    position: absolute;
+    content: '   ';
+    width: 2%;
+    height: 10%;
+    background-color: $accent;
 }
 
 .submitButton {

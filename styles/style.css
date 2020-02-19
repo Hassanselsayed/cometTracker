@@ -275,9 +275,11 @@ html {
 }
 
 body {
-  background-image: url(../assets/image_from_ios.jpg);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(245, 246, 252, 0.25)), to(rgba(55, 42, 65, 0.7))), url(../assets/image_from_ios.jpg);
+  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.25), rgba(55, 42, 65, 0.7)), url(../assets/image_from_ios.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 header {
@@ -313,15 +315,15 @@ header h2 {
 .fieldsetFlex {
   display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 40% 60%;
+      grid-template-columns: 40% 60%;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
-  -ms-grid-columns: 1fr 2fr;
-      grid-template-columns: 1fr 2fr;
   grid-gap: 30px;
 }
 
 h3 {
-  color: #40e0d0;
+  color: #f1fcfc;
   font-size: 2.5rem;
   font-family: "Odibee Sans", cursive;
   text-transform: uppercase;
@@ -332,7 +334,7 @@ p {
   color: #40e0d0;
   font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 
 .planetSearchTextBox,
@@ -352,15 +354,6 @@ p {
           flex-direction: column;
 }
 
-.fieldsetFlex fieldset:first-child {
-  margin-right: 20px;
-  width: calc(30% - 10px);
-}
-
-.fieldsetFlex fieldset:last-child {
-  width: calc(70% - 10px);
-}
-
 fieldset {
   font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
@@ -376,59 +369,18 @@ fieldset {
 }
 
 .closestObjFlex {
-  padding-top: 5vh;
-  margin-left: 25px;
+  padding-top: 5%;
+  position: relative;
 }
 
 .closestObjFlex ul {
-  margin-top: 2vh;
-  border-left: 2px solid #f1fcfc;
-  border-right: 2px solid #f1fcfc;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.closestObjFlex ul li:first-child::before,
-.closestObjFlex ul li:first-child::after,
-.closestObjFlex ul li:last-child::before,
-.closestObjFlex ul li:last-child::after {
-  content: '';
-  width: 2vw;
-}
-
-.closestObjFlex ul li:first-child::before,
-.closestObjFlex ul li:first-child::after {
-  border-top: 2px solid #f1fcfc;
-}
-
-.closestObjFlex ul li:first-child::after,
-.closestObjFlex ul li:last-child::after {
-  float: right;
-}
-
-.closestObjFlex ul li:first-child::before,
-.closestObjFlex ul li:last-child::before {
-  float: left;
-}
-
-.closestObjFlex ul li:last-child::before,
-.closestObjFlex ul li:last-child::after {
-  border-bottom: 2px solid #f1fcfc;
-  position: absolute;
-  bottom: 0;
-}
-
-.closestObjFlex ul li:last-child::after {
-  right: 0;
-}
-
-.closestObjFlex ul li:last-child::before {
-  left: 0;
-}
-
-.closestObjFlex ul li:not(:first-child) {
-  padding: 0 2vw;
+.closestObjFlex ul li {
+  padding: 2%;
 }
 
 .closestObjFlex ul li {
@@ -437,6 +389,22 @@ fieldset {
   font-size: 2rem;
   color: #f1fcfc;
   position: relative;
+}
+
+ul::after {
+  position: absolute;
+  content: '   ';
+  width: 10%;
+  height: 2%;
+  background-color: #40e0d0;
+}
+
+ul::before {
+  position: absolute;
+  content: '   ';
+  width: 2%;
+  height: 10%;
+  background-color: #40e0d0;
 }
 
 .submitButton {
