@@ -72,10 +72,10 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
 
         // appending h3 to container div
         if (result.count === '1') {
-            const h3ToAppend = `<h3>Closest ${$filteredObjects.length} object</h3>`;
+            const h3ToAppend = `<h3>showing the closest object between now and the next 60 days</h3>`;
             $('.closestObjFlex').append(h3ToAppend);
         } else {
-            const h3ToAppend = `<h3>Closest ${$filteredObjects.length} objects</h3>`;
+            const h3ToAppend = `<h3 class = "objectDescription">showing the closest ${$filteredObjects.length} objects between now and the next 60 days</h3>`;
             $('.closestObjFlex').append(h3ToAppend);
         }
 
@@ -88,7 +88,7 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
                 <ul>
                     <li>
                         <p>Name: ${$filteredObjects[i][11]}</p>
-                        <p>Approach date: ${$filteredObjects[i][3]}</p></li>
+                        <p>Approach date: ${$filteredObjects[i][3]}</p>
                         <p>Distance from ${planetName}: ${$commaSeperatedDistance} km </p>
                     </li>
                 </ul>

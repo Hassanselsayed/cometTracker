@@ -53,11 +53,12 @@ header{
         @include primaryFont();
         @include fontSize(60);
         color: $primaryWhite;
+        letter-spacing: 19px;
     }
     h2{
         @include secondaryFont();
-        @include fontSize(20);
-        color: $accent;
+        @include fontSize(18);
+        color: $primaryWhite;
         text-transform: uppercase;
 
     }
@@ -79,8 +80,8 @@ header{
 
 h3 {
     color: $primaryWhite;
-    @include fontSize(25);
-    @include primaryFont();
+    @include fontSize(18);
+    @include secondaryFont();
 }
 
 p{
@@ -111,50 +112,10 @@ fieldset{
     position: relative;
 
     ul {
-        // margin-top: 2vh;
-        // border-left: 2px solid $primaryWhite;
-        // border-right: 2px solid $primaryWhite;
-        
         width: fit-content;
             li{
-                padding: 2%;
+                padding: 3% 0;
             }
-
-        // // adding square brackets to each ul dynamically added to the webpage
-        // li:first-child::before,
-        // li:first-child::after,
-        // li:last-child::before,
-        // li:last-child::after {
-        //     content: '';
-        //     width: 2vw; 
-        // }
-        // li:first-child::before,
-        // li:first-child::after {
-        //     border-top: 2px solid $primaryWhite;
-        // }
-        // li:first-child::after,
-        // li:last-child::after {
-        //     float: right;
-        // }
-        // li:first-child::before,
-        // li:last-child::before {
-        //     float: left;
-        // }
-        // li:last-child::before,
-        // li:last-child::after {
-        //     border-bottom: 2px solid $primaryWhite;
-        //     position: absolute;
-        //     bottom: 0;
-        // }
-        // li:last-child::after {
-        //     right: 0;
-        // }
-        // li:last-child::before {
-        //     left: 0;
-        // }
-        // li:not(:first-child) {
-        //     padding: 0 2vw;
-        // }
         li{
             @include secondaryFont();
             @include fontSize(20);
@@ -164,21 +125,7 @@ fieldset{
     } 
 }
 
-// ul::after{
-//     position: absolute;
-//     content: '   ';
-//     width: 10%;
-//     height: 2%;
-//     background-color: $accent;
-// }
 
-// ul::before{
-//     position: absolute;
-//     content: '   ';
-//     width: 2%;
-//     height: 10%;
-//     background-color: $accent;
-// }
 
 .submitButton {
     background: none;

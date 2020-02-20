@@ -4,7 +4,7 @@
 $primaryFont: 'Odibee Sans', cursive;
 $secondaryFont:'Roboto', sans-serif;
 
-$letterSpacing: 1px;
+$letterSpacing: 3px;
 
 // colour: Color Palette 169452
 $accent: #40e0d0;
@@ -27,7 +27,7 @@ $primaryWhite: #f1fcfc;
 @mixin primaryFont(){
 	font-family: $primaryFont;
 	text-transform: uppercase;
-	letter-spacing: 5px;
+	letter-spacing: 10px;
 }
 
 @mixin secondaryFont(){
