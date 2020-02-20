@@ -16,11 +16,11 @@ cometApp.planetSelectListener = function() {
     const userChoice = $('#body option:selected').text();
     const userChoiceVal = $('#body').val();
 
-    const pendingRespone = cometApp.ajaxCall(userChoice, userChoiceVal); 
+    const pendingRespone = cometApp.ajaxCall(userChoiceVal); 
     
     pendingRespone.then(function(result) {
     
-        cometApp.displayDefaultBodyResults(result, userChoice, userChoiceVal);
+        cometApp.displayDefaultBodyResults(result, userChoice);
 
     })
 };
@@ -38,7 +38,7 @@ cometApp.formListener = function(e){
         const userInputMinDate = cometApp.$minDateInput.val();
         const userInputMaxDate = cometApp.$maxDateInput.val();
     
-        const userChoice = $("#body option:selected").text();
+        // const userChoice = $("#body option:selected").text();
         const userChoiceVal = $('#body').val();  
 
         const spaceObjChoice = $('#spaceObject option:selected').text();
@@ -47,11 +47,12 @@ cometApp.formListener = function(e){
         const minDate = userInputMinDate ? userInputMinDate : 'now';
         const maxDate = userInputMaxDate ? userInputMaxDate : '+60';
     
-        const pendingRespone = cometApp.ajaxCall(userChoice, userChoiceVal, minDate, maxDate, spaceObjChoiceVal); 
+        const pendingRespone = cometApp.ajaxCall(userChoiceVal, minDate, maxDate, spaceObjChoiceVal); 
 
         pendingRespone.then(function(result) {
             cometApp.displayDateResults(result, minDate, maxDate, spaceObjChoice);
-    
+        }).fail(function() {
+            console.log('stop fucking around');
         })
         
     }else{
@@ -62,7 +63,7 @@ cometApp.formListener = function(e){
 }
 
 // Display planet object search  
-cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) {
+cometApp.displayDefaultBodyResults = function (result, planetName) {
     if (result.count === '0') {
         const htmlToAppend = `<h3>No results for ${planetName} at this time</h3>`;
         $('.closestObjFlex').append(htmlToAppend);
@@ -105,7 +106,7 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
 cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
     // $('.dateSearchResults').empty();
     if (result.count === '0') {
-        const htmlToAppend = `<h3>No results for ${kind} at this time</h3>`;
+        const htmlToAppend = `<h3>No results for ${kind} during this period</h3>`;
         $('.dateSearchResults').append(htmlToAppend);
     } else {
         const $filteredObjects = result.data.slice(0, 8);
@@ -139,7 +140,7 @@ cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
 
 
 // AJAX call function
-cometApp.ajaxCall = function(planetName, planetValue, minDate, maxDate, userKind) {
+cometApp.ajaxCall = function(planetValue, minDate, maxDate, userKind) {
     // start of AJAX call
     return $.ajax({
         url: `https://ssd-api.jpl.nasa.gov/cad.api`,
