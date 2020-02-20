@@ -28,7 +28,7 @@
             <!-- body search starts  -->
             <div class="planetSearchFlex">
                 <div class="planetSearchTextBox">
-                    <h3>step one: planet/satalite search</h3>
+                    <h3>step one: planet/satellite search</h3>
                     <p>select a planet/moon and see three close approaches between now and the next 60 days</p>
                 </div>
                 <fieldset>
@@ -76,7 +76,14 @@
                                 <label for="date">Search Future Dates:</label>
                                 <input type="date" name="max-date" id="max-date">
                             </div>
-        
+                            
+                            <select name="spaceObject" id="spaceObject">
+                                <option selected="selected" disabled value="spaceObjectDefault">Space Object</option>
+                                <option value="a">Asteriod</option>
+                                <option value="c">Comets</option>
+                                <option value="n">Misc Objects</option>
+                            </select>
+
                             <input type="submit" class="submitButton" value="enter">
         
                             <!-- end of datesSearchFlex -->

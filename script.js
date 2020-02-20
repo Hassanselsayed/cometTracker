@@ -9,12 +9,11 @@ cometApp.commaSeparateNumber = function(val) {
     return val;
 };
 
-// event listeners
 
-// planet selection listener
-cometApp.selectListener = function() {
+// planet select listener
+cometApp.planetSelectListener = function() {
     $('.closestObjFlex').empty();
-    const userChoice = $(this).children('option:selected').text();
+    const userChoice = $('#body option:selected').text();
     const userChoiceVal = $('#body').val();
 
     const pendingRespone = cometApp.ajaxCall(userChoice, userChoiceVal); 
@@ -26,6 +25,7 @@ cometApp.selectListener = function() {
     })
 };
 
+
 // collect user input date
 cometApp.$minDateInput = $('#min-date');
 cometApp.$maxDateInput = $('#max-date');
@@ -33,26 +33,29 @@ cometApp.$maxDateInput = $('#max-date');
 // date form listener 
 cometApp.formListener = function(e){
     e.preventDefault();
-    if ($('option:selected').val() !== 'planet') {
+    if ($('#body option:selected').val() !== 'planet' && $('#spaceObject option:selected').val() !== 'spaceObjectDefault') {
         $('.dateSearchResults').empty();
         const userInputMinDate = cometApp.$minDateInput.val();
         const userInputMaxDate = cometApp.$maxDateInput.val();
     
-        const userChoice = $(this).children("option:selected").text();
-        const userChoiceVal = $('#body').val();   
+        const userChoice = $("#body option:selected").text();
+        const userChoiceVal = $('#body').val();  
 
+        const spaceObjChoice = $('#spaceObject option:selected').text();
+        const spaceObjChoiceVal = $('#spaceObject').val();
+        
         const minDate = userInputMinDate ? userInputMinDate : 'now';
         const maxDate = userInputMaxDate ? userInputMaxDate : '+60';
     
-        const pendingRespone = cometApp.ajaxCall(userChoice, userChoiceVal, minDate, maxDate); 
-    
+        const pendingRespone = cometApp.ajaxCall(userChoice, userChoiceVal, minDate, maxDate, spaceObjChoiceVal); 
+
         pendingRespone.then(function(result) {
-        cometApp.displayDateResults(result, minDate, maxDate);
+            cometApp.displayDateResults(result, minDate, maxDate, spaceObjChoice);
     
-    })
+        })
         
     }else{
-        const errorToAppend = `<h3>please choose a planet first</h3>`;
+        const errorToAppend = `<h3>please choose a planet and a space object first</h3>`;
         $('.dateSearchResults').append(errorToAppend);
     }
 }
@@ -98,36 +101,40 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
 }
 
 // Display date search results 
-cometApp.displayDateResults = function(result, minDate, maxDate) {
-    const $filteredObjects = result.data.slice(0, 15);
-    console.log($filteredObjects);
-
-    // looping over the new filtered array using the .forEach method
-    $filteredObjects.forEach(function (currentVal, i) {
-
-        const $convertedDistance = $filteredObjects[i][4] * 149597871;
-        const $commaSeperatedDistance = cometApp.commaSeparateNumber($convertedDistance.toFixed(0));
-
-        const htmlToAppend = `
-            <ul style="color:white;">
-                <li>
-                    <p>Name: ${$filteredObjects[i][11]}</p>
-                    <p>Approach date: ${$filteredObjects[i][3]}</p>
-                    <p>Distance: ${$commaSeperatedDistance} km</p>
-                </li>
-            </ul>
-            `;
+cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
+    if (result.count === '0') {
+        const htmlToAppend = `<h3>No results for ${kind} at this time</h3>`;
         $('.dateSearchResults').append(htmlToAppend);
-        // end of forEach method
-    });
-    $('select').change(function() {
-        $('.dateSearchResults').empty();
-    });
+    } else {
+        const $filteredObjects = result.data.slice(0, 15);
+    
+        // looping over the new filtered array using the .forEach method
+        $filteredObjects.forEach(function (currentVal, i) {
+    
+            const $convertedDistance = $filteredObjects[i][4] * 149597871;
+            const $commaSeperatedDistance = cometApp.commaSeparateNumber($convertedDistance.toFixed(0));
+    
+            const htmlToAppend = `
+                <ul style="color:white;">
+                    <li>
+                        <p>Name: ${$filteredObjects[i][11]}</p>
+                        <p>Approach date: ${$filteredObjects[i][3]}</p>
+                        <p>Distance: ${$commaSeperatedDistance} km</p>
+                    </li>
+                </ul>
+                `;
+            $('.dateSearchResults').append(htmlToAppend);
+            // end of forEach method
+        });
+        $('select').change(function() {
+            $('.dateSearchResults').empty();
+        });
+    }
 }
 
 
 // AJAX call function
-cometApp.ajaxCall = function(planetName, planetValue, minDate, maxDate) {
+cometApp.ajaxCall = function(planetName, planetValue, minDate, maxDate, userKind) {
     // start of AJAX call
     return $.ajax({
         url: `https://ssd-api.jpl.nasa.gov/cad.api`,
@@ -138,13 +145,15 @@ cometApp.ajaxCall = function(planetName, planetValue, minDate, maxDate) {
             body: planetValue,
             'date-min': minDate,
             'date-max': maxDate,
+            kind: userKind
         } 
     })
 };
 
 
 cometApp.init = function () {
-    $('select').change(cometApp.selectListener);
+    $('#body').change(cometApp.planetSelectListener);
+    $('#spaceObject').change(cometApp.spaceObjSelectListener);
     $('form').on('submit', cometApp.formListener);
 }
     
