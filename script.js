@@ -55,6 +55,7 @@ cometApp.formListener = function(e){
         })
         
     }else{
+        $('.dateSearchResults').empty();
         const errorToAppend = `<h3>please choose a planet and a space object first</h3>`;
         $('.dateSearchResults').append(errorToAppend);
     }
@@ -102,11 +103,15 @@ cometApp.displayDefaultBodyResults = function (result, planetName, planetValue) 
 
 // Display date search results 
 cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
+    // $('.dateSearchResults').empty();
     if (result.count === '0') {
         const htmlToAppend = `<h3>No results for ${kind} at this time</h3>`;
         $('.dateSearchResults').append(htmlToAppend);
     } else {
-        const $filteredObjects = result.data.slice(0, 15);
+        const $filteredObjects = result.data.slice(0, 8);
+
+        const headingToAppend = `<h3>list of up to the closest 8 recorded approaches from selected planet/moon</h3>`;
+        $('.dateSearchResults').append(headingToAppend);
     
         // looping over the new filtered array using the .forEach method
         $filteredObjects.forEach(function (currentVal, i) {
