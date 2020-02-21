@@ -394,8 +394,11 @@ fieldset {
       grid-template-rows: 1fr 1fr;
 }
 
-.datesSearch label {
+.datesSearch label,
+.datesSearch input,
+.datesSearch select {
   text-align: center;
+  margin: 5px;
 }
 
 .closestObjFlex,
@@ -468,7 +471,7 @@ footer .imgDiv {
 
 @media (max-width: 600px) {
   .wrapper {
-    width: 95%;
+    width: 90%;
   }
   .fieldsetFlex {
     -ms-grid-columns: auto;

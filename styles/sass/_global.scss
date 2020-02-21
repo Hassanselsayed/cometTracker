@@ -130,8 +130,11 @@ fieldset{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    label{
+    label,
+    input,
+    select{
         text-align: center;
+        margin: 5px;
     }
 }
 // dynamic elements' styles

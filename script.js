@@ -108,7 +108,7 @@ cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
     } else {
         const $filteredObjects = result.data.slice(0, 8);
 
-        const headingToAppend = `<p class = "pInfo">up to 8 recorded close approches</p>`;
+        const headingToAppend = `<p class = "pInfo">showing up to 8 recorded close approches</p>`;
         $('.dateSearchResults').append(headingToAppend);
     
         // looping over the new filtered array using the .forEach method
