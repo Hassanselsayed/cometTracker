@@ -29,12 +29,12 @@
             <!-- body search starts  -->
             <div class="planetSearchFlex">
                 <div class="planetSearchTextBox">
-                    <h3><i class="fas fa-search"></i> planet/satellite search</h3>
+                    <h3><i class="fas fa-search"></i> planet/satellite</h3>
                 </div>
                 <fieldset>
-                    <label for="body">Select a Planet/Moon</label>
+                    <label for="body">select a planet/moon</label>
                     <select name="body" id="body">
-                        <option selected="selected" disabled value="planet">Planet</option>
+                        <option selected="selected" disabled value="planet">planet</option>
                         <option value="Earth">Earth</option>
                         <option value="Moon">Moon</option>
                         <option value="Merc">Mercury</option>
@@ -60,38 +60,24 @@
             <!-- start of dateSearchFlex -->
             <div class="dateSearchFlex">
                 <div class="dateSearchTextBox">
-                    <h3>step two: past/future close approaches</h3>
-                    <p>select dates in the past and/or future and see a list of the closest 15 recorded approaches from your selected planet/moon</p>
+                    <h3><i class="fas fa-search"></i> past/future close approaches</h3>
                 </div>
                 <fieldset>
-                    <form action="">
-                        <!-- start of datesSearchFlex -->
-                        <div class="datesSearchFlex">
-                            <div class="dateFlex">
-                                <label for="min-date">Search Past Dates:</label>
-                                <input type="date" name="min-date" id="min-date">
-                            </div>
-        
-                            <div class="dateFlex">
-                                <label for="date">Search Future Dates:</label>
-                                <input type="date" name="max-date" id="max-date">
-                            </div>
-                            
-                            <select name="spaceObject" id="spaceObject">
-                                <option selected="selected" disabled value="spaceObjectDefault">Space Object</option>
-                                <option value="a">Asteriod</option>
-                                <option value="c">Comets</option>
-                                <option value="n">Misc Objects</option>
-                            </select>
-
-                            <input type="submit" class="submitButton" value="enter">
-        
-                            <!-- end of datesSearchFlex -->
-                        </div>
-        
+                    <form class = "datesSearch" action="">
+                        <label for="min-date">past</label>
+                        
+                        <label for="date">future</label>
+                        <input type="date" name="min-date" id="min-date">
+                        <input type="date" name="max-date" id="max-date">
+                        <select name="spaceObject" id="spaceObject">
+                            <option selected="selected" disabled value="spaceObjectDefault">celestial object</option>
+                            <option value="a">asteriod</option>
+                            <option value="c">comets</option>
+                            <option value="n">misc objects</option>
+                        </select>
+                        <input type="submit" class="submitButton" value="enter">
                     </form>
                 </fieldset>
-                <!-- end of dateSearchFlex -->
                 
                 <div class="dateSearchResults">
                     <!-- dates search results will be added dynamically here -->
@@ -103,9 +89,15 @@
         </div>
     </main>
 
+    <footer>
+        <p>created with the NASA Jet Propulsion Laboratory Small-Body Database API</p>
+        <div class = "imgDiv"><img src="./assets/nasaLogo.png" alt="NASA (National Aeronautics and Space Administration)"></div>
+    </footer>
+
     <script src='https://code.jquery.com/jquery-3.4.0.min.js'
         integrity='sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=' crossorigin='anonymous'></script>
     <script src="script.js"></script>
 </body>
+
 
 </html>

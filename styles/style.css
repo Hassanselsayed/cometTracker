@@ -272,14 +272,19 @@ img {
 
 html {
   font-size: 62.5%;
+  text-shadow: 0px 1px 2px #333333;
 }
 
 body {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(245, 246, 252, 0.25)), to(rgba(55, 42, 65, 0.7))), url(../assets/image_from_ios.jpg);
-  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.25), rgba(55, 42, 65, 0.7)), url(../assets/image_from_ios.jpg);
-  background-repeat: no-repeat;
+  background-image: radial-gradient(circle at center, rgba(51, 51, 52, 0.25), rgba(55, 42, 65, 0.7)), url(../assets/image_from_ios.jpg);
   background-size: cover;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+  grid-auto-columns: 100%;
   height: 100vh;
+  min-height: 100%;
 }
 
 header {
@@ -311,6 +316,12 @@ header h2 {
   font-size: 1.8rem;
   color: #f1fcfc;
   text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.planetSearchGrid {
+  display: -ms-grid;
+  display: grid;
 }
 
 .fieldsetFlex {
@@ -321,6 +332,7 @@ header h2 {
   -ms-grid-rows: auto;
       grid-template-rows: auto;
   grid-gap: 30px;
+  min-height: 100%;
 }
 
 h3 {
@@ -328,13 +340,24 @@ h3 {
   font-size: 1.8rem;
   font-family: "Roboto", sans-serif;
   letter-spacing: 3px;
+  letter-spacing: 6px;
+  padding: 10px;
+  text-align: center;
 }
 
 p {
-  color: #40e0d0;
+  color: #f1fcfc;
   font-family: "Roboto", sans-serif;
   letter-spacing: 3px;
   font-size: 1.5rem;
+}
+
+.pInfo {
+  color: #40e0d0;
+}
+
+.planetTextbox {
+  text-transform: uppercase;
 }
 
 .planetSearchTextBox,
@@ -362,41 +385,46 @@ fieldset {
   color: #f1fcfc;
 }
 
-.datesSearchFlex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.datesSearch {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
 }
 
-.closestObjFlex {
+.datesSearch label {
+  text-align: center;
+}
+
+.closestObjFlex,
+.dateSearchResults {
   padding-top: 5%;
-  position: relative;
 }
 
-.closestObjFlex ul {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.closestObjFlex ul li {
-  padding: 3% 0;
-}
-
-.closestObjFlex ul li {
+.closestObjFlex ul li,
+.dateSearchResults ul li {
   font-family: "Roboto", sans-serif;
   letter-spacing: 3px;
   font-size: 2rem;
   color: #f1fcfc;
-  position: relative;
+  padding: 3% 0;
+}
+
+.speaceObjectFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .submitButton {
   background: none;
-  border: 4px solid #f1fcfc;
+  border: 2px solid #f1fcfc;
   font-family: "Roboto", sans-serif;
   letter-spacing: 3px;
-  text-transform: uppercase;
   color: #f1fcfc;
   padding: 5px 10px;
   cursor: pointer;
@@ -407,4 +435,52 @@ fieldset {
 .submitButton:hover,
 .submitButton:focus {
   background-color: rgba(64, 224, 208, 0.5);
+}
+
+footer {
+  background: black;
+  color: #f1fcfc;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer p {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+footer .imgDiv {
+  width: 3%;
+}
+
+@media (max-width: 700px) {
+  body {
+    background-position: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    width: 95%;
+  }
+  .fieldsetFlex {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  header h1 {
+    font-size: 4rem;
+  }
+  header h2 {
+    font-size: 1rem;
+  }
+  footer .imgDiv {
+    width: 15%;
+  }
 }

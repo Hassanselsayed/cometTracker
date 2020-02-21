@@ -1,0 +1,27 @@
+// media queries 
+
+@media(max-width: 700px){
+    body{
+        background-position: 50%;
+    }
+}
+
+@media(max-width: 600px){
+    .wrapper{
+        width: 95%;
+    }
+    .fieldsetFlex{
+        grid-template-columns: auto;
+    }
+    header h1{
+        @include fontSize(40);
+    }
+    header h2{
+        @include fontSize(10);
+    }
+    footer{
+        .imgDiv{
+            width: 15%;
+        }
+    }
+}

@@ -10,7 +10,7 @@ cometApp.commaSeparateNumber = function(val) {
 };
 
 
-// planet select listener
+// select a planet listener
 cometApp.planetSelectListener = function() {
     $('.closestObjFlex').empty();
     const userChoice = $('#body option:selected').text();
@@ -51,13 +51,10 @@ cometApp.formListener = function(e){
 
         pendingRespone.then(function(result) {
             cometApp.displayDateResults(result, minDate, maxDate, spaceObjChoice);
-        }).fail(function() {
-            console.log('stop fucking around');
         })
-        
     }else{
         $('.dateSearchResults').empty();
-        const errorToAppend = `<h3>please choose a planet and a space object first</h3>`;
+        const errorToAppend = `<h3>please choose a planet and a celestial object first</h3>`;
         $('.dateSearchResults').append(errorToAppend);
     }
 }
@@ -65,7 +62,7 @@ cometApp.formListener = function(e){
 // Display planet object search  
 cometApp.displayDefaultBodyResults = function (result, planetName) {
     if (result.count === '0') {
-        const htmlToAppend = `<h3>No results for ${planetName} at this time</h3>`;
+        const htmlToAppend = `<h3>no results for ${planetName} at this time</h3>`;
         $('.closestObjFlex').append(htmlToAppend);
     } else {
 
@@ -74,11 +71,11 @@ cometApp.displayDefaultBodyResults = function (result, planetName) {
 
         // appending h3 to container div
         if (result.count === '1') {
-            const h3ToAppend = `<h3>showing the closest object between now and the next 60 days</h3>`;
+            const h3ToAppend = `<p class = "pInfo">closest object between now and the next 60 days</p>`;
             $('.closestObjFlex').append(h3ToAppend);
         } else {
-            const h3ToAppend = `<h3 class = "objectDescription">showing the closest ${$filteredObjects.length} objects between now and the next 60 days</h3>`;
-            $('.closestObjFlex').append(h3ToAppend);
+            const pToAppend = `<p class = "pInfo">closest ${$filteredObjects.length} objects between now and the next 60 days</h3>`;
+            $('.closestObjFlex').append(pToAppend);
         }
 
         // looping over the new filtered array using the .forEach method
@@ -88,7 +85,7 @@ cometApp.displayDefaultBodyResults = function (result, planetName) {
 
             const htmlToAppend = `
                 <ul>
-                    <li>
+                    <li class = "planetTextbox">
                         <p>Name: ${$filteredObjects[i][11]}</p>
                         <p>Approach date: ${$filteredObjects[i][3]}</p>
                         <p>Distance from ${planetName}: ${$commaSeperatedDistance} km </p>
@@ -106,12 +103,12 @@ cometApp.displayDefaultBodyResults = function (result, planetName) {
 cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
     // $('.dateSearchResults').empty();
     if (result.count === '0') {
-        const htmlToAppend = `<h3>No results for ${kind} during this period</h3>`;
+        const htmlToAppend = `<p class = "pInfo">no results for ${kind} during this period</p>`;
         $('.dateSearchResults').append(htmlToAppend);
     } else {
         const $filteredObjects = result.data.slice(0, 8);
 
-        const headingToAppend = `<h3>list of up to the closest 8 recorded approaches from selected planet/moon</h3>`;
+        const headingToAppend = `<p class = "pInfo">up to 8 recorded close approches</p>`;
         $('.dateSearchResults').append(headingToAppend);
     
         // looping over the new filtered array using the .forEach method
@@ -121,8 +118,8 @@ cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
             const $commaSeperatedDistance = cometApp.commaSeparateNumber($convertedDistance.toFixed(0));
     
             const htmlToAppend = `
-                <ul style="color:white;">
-                    <li>
+                <ul dateSearchGrid>
+                    <li class = "planetTextbox">
                         <p>Name: ${$filteredObjects[i][11]}</p>
                         <p>Approach date: ${$filteredObjects[i][3]}</p>
                         <p>Distance: ${$commaSeperatedDistance} km</p>
