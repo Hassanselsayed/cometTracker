@@ -9,7 +9,6 @@ cometApp.commaSeparateNumber = function(val) {
     return val;
 };
 
-
 // select a planet listener
 cometApp.planetSelectListener = function() {
     $('.closestObjFlex').empty();
@@ -24,7 +23,6 @@ cometApp.planetSelectListener = function() {
 
     })
 };
-
 
 // collect user input date
 cometApp.$minDateInput = $('#min-date');
@@ -50,9 +48,9 @@ cometApp.formListener = function(e){
         const pendingRespone = cometApp.ajaxCall(userChoiceVal, minDate, maxDate, spaceObjChoiceVal); 
 
         pendingRespone.then(function(result) {
-            cometApp.displayDateResults(result, minDate, maxDate, spaceObjChoice);
+            cometApp.displayDateResults(result, spaceObjChoice);
         })
-    }else{
+    } else {
         $('.dateSearchResults').empty();
         const errorToAppend = `<h3>please choose a planet and a celestial object first</h3>`;
         $('.dateSearchResults').append(errorToAppend);
@@ -100,8 +98,7 @@ cometApp.displayDefaultBodyResults = function (result, planetName) {
 }
 
 // Display date search results 
-cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
-    // $('.dateSearchResults').empty();
+cometApp.displayDateResults = function(result, kind) {
     if (result.count === '0') {
         const htmlToAppend = `<p class = "pInfo">no results for ${kind} during this period</p>`;
         $('.dateSearchResults').append(htmlToAppend);
@@ -138,7 +135,6 @@ cometApp.displayDateResults = function(result, minDate, maxDate, kind) {
 
 // AJAX call function
 cometApp.ajaxCall = function(planetValue, minDate, maxDate, userKind) {
-    // start of AJAX call
     return $.ajax({
         url: `https://ssd-api.jpl.nasa.gov/cad.api`,
         method: 'GET',
@@ -153,13 +149,14 @@ cometApp.ajaxCall = function(planetValue, minDate, maxDate, userKind) {
     })
 };
 
-
+// init function
 cometApp.init = function () {
     $('#body').change(cometApp.planetSelectListener);
     $('#spaceObject').change(cometApp.spaceObjSelectListener);
     $('form').on('submit', cometApp.formListener);
 }
     
+// document ready
 $(() => {
     cometApp.init();
 });
