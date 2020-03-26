@@ -137,19 +137,14 @@ fieldset{
         color: $primaryWhite;
         padding: 5px 10px;
         cursor: pointer;
+        transition: background-color 0.5s ease;
     }
+    .submitButton:hover,
+    .submitButton:focus {
+        background-color: rgba(64, 224, 208, 0.5);
+    }   
 }
 
-input,
-.submitButton {
-    transition: background-color 0.5s ease;
-}
-input:hover,
-input:focus,
-.submitButton:hover,
-.submitButton:focus {
-    background-color: rgba(64, 224, 208, 0.5);
-}   
 
 
 // dynamic elements' styles

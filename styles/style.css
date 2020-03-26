@@ -406,18 +406,12 @@ fieldset {
   color: #f1fcfc;
   padding: 5px 10px;
   cursor: pointer;
-}
-
-input,
-.submitButton {
   -webkit-transition: background-color 0.5s ease;
   transition: background-color 0.5s ease;
 }
 
-input:hover,
-input:focus,
-.submitButton:hover,
-.submitButton:focus {
+.datesSearch .submitButton:hover,
+.datesSearch .submitButton:focus {
   background-color: rgba(64, 224, 208, 0.5);
 }
 
