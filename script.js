@@ -69,10 +69,10 @@ cometApp.displayDefaultBodyResults = function (result, planetName) {
 
         // appending h3 to container div
         if (result.count === '1') {
-            const h3ToAppend = `<p class = "pInfo">closest object between now and the next 60 days</p>`;
+            const h3ToAppend = `<p class="pInfo">closest object between now and the next 60 days</p>`;
             $('.closestObjFlex').append(h3ToAppend);
         } else {
-            const pToAppend = `<p class = "pInfo">closest ${$filteredObjects.length} objects between now and the next 60 days</h3>`;
+            const pToAppend = `<p class="pInfo">closest ${$filteredObjects.length} objects between now and the next 60 days</h3>`;
             $('.closestObjFlex').append(pToAppend);
         }
 
@@ -83,7 +83,7 @@ cometApp.displayDefaultBodyResults = function (result, planetName) {
 
             const htmlToAppend = `
                 <ul>
-                    <li class = "planetTextbox">
+                    <li class="planetTextbox">
                         <p>Name: ${$filteredObjects[i][11]}</p>
                         <p>Approach date: ${$filteredObjects[i][3]}</p>
                         <p>Distance from ${planetName}: ${$commaSeperatedDistance} km </p>
@@ -100,12 +100,12 @@ cometApp.displayDefaultBodyResults = function (result, planetName) {
 // Display date search results 
 cometApp.displayDateResults = function(result, kind) {
     if (result.count === '0') {
-        const htmlToAppend = `<p class = "pInfo">no results for ${kind} during this period</p>`;
+        const htmlToAppend = `<p class="pInfo">no results for ${kind} during this period</p>`;
         $('.dateSearchResults').append(htmlToAppend);
     } else {
         const $filteredObjects = result.data.slice(0, 8);
 
-        const headingToAppend = `<p class = "pInfo">showing up to 8 recorded close approches</p>`;
+        const headingToAppend = `<p class="pInfo">showing up to 8 recorded close approches</p>`;
         $('.dateSearchResults').append(headingToAppend);
     
         // looping over the new filtered array using the .forEach method
@@ -115,8 +115,8 @@ cometApp.displayDateResults = function(result, kind) {
             const $commaSeperatedDistance = cometApp.commaSeparateNumber($convertedDistance.toFixed(0));
     
             const htmlToAppend = `
-                <ul dateSearchGrid>
-                    <li class = "planetTextbox">
+                <ul>
+                    <li class="planetTextbox">
                         <p>Name: ${$filteredObjects[i][11]}</p>
                         <p>Approach date: ${$filteredObjects[i][3]}</p>
                         <p>Distance: ${$commaSeperatedDistance} km</p>
