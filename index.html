@@ -28,13 +28,13 @@
         <div class="wrapper fieldsetFlex">
 
             <!-- body search starts  -->
-            <div class="planetSearchFlex">
+            <div>
                 <div class="planetSearchTextBox">
-                    <h3><i class="fas fa-search"></i> planet/satellite</h3>
+                    <h3><i class="fas fa-search"></i> Planet/Satellite</h3>
                 </div>
                 <!-- fieldset containing planet/moon selection dropdown menu -->
-                <fieldset>
-                    <label for="body">select a planet/moon</label>
+                <fieldset class="planetSearch">
+                    <label for="body">Select a planet/moon</label>
                     <select name="body" id="body">
                         <option selected="selected" disabled value="planet">planet</option>
                         <option value="Earth">Earth</option>
@@ -60,15 +60,15 @@
             <!-- start of dateSearchFlex -->
             <div class="dateSearchFlex">
                 <div class="dateSearchTextBox">
-                    <h3><i class="fas fa-search"></i> past/future close approaches</h3>
+                    <h3><i class="fas fa-search"></i> Past/Future close approaches</h3>
                 </div>
                 <!-- fieldset containing dates input and celestial objects dropdown menu -->
                 <fieldset>
-                    <form class = "datesSearch" action="">
-                        <label for="min-date">past<span class="sr-only">default is 60 days from today</span></label>
-                        <label for="max-date">future<span class="sr-only">default is 60 days from today</span></label>
-                        <input type="date" name="min-date" id="min-date" title="default is today">
-                        <input type="date" name="max-date" id="max-date" title="default is 60 days from today">
+                    <form class="datesSearch" action="">
+                        <label for="minDate">Start date<span class="sr-only">default is today</span></label>
+                        <label for="maxDate">End date<span class="sr-only">default is 60 days from today</span></label>
+                        <input type="date" name="minDate" id="minDate" title="default is today">
+                        <input type="date" name="maxDate" id="maxDate" title="default is 60 days from today">
                         <select name="spaceObject" id="spaceObject">
                             <option selected="selected" disabled value="spaceObjectDefault">celestial object</option>
                             <option value="a">asteroid</option>
@@ -90,7 +90,7 @@
     </main>
 
     <footer>
-        <p>created with the NASA Jet Propulsion Laboratory Small-Body Database API</p>
+        <p>Copyright © 2020 Hassan Elsayed & Laura MacKew. Created with the NASA Jet Propulsion Laboratory Small-Body Database API</p>
         <div class = "imgDiv"><img src="./assets/nasaLogo.png" alt="NASA (National Aeronautics and Space Administration)"></div>
     </footer>
 

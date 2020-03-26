@@ -1,5 +1,4 @@
 // media queries 
-
 @media(max-width: 700px){
     body{
         background-position: 50%;
@@ -18,6 +17,9 @@
     }
     header h2{
         @include fontSize(10);
+    }
+    fieldset {
+        @include fontSize(13);
     }
     footer{
         .imgDiv{

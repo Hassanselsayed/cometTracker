@@ -235,7 +235,6 @@ html {
   overflow: hidden;
 }
 
-/* stripping styles */
 body,
 a,
 p,
@@ -264,7 +263,6 @@ a {
   text-decoration: none;
 }
 
-/* base styling */
 img {
   width: 100%;
   display: block;
@@ -317,11 +315,6 @@ header h2 {
   color: #f1fcfc;
   text-transform: uppercase;
   letter-spacing: 4px;
-}
-
-.planetSearchGrid {
-  display: -ms-grid;
-  display: grid;
 }
 
 .fieldsetFlex {
@@ -377,6 +370,10 @@ p {
           flex-direction: column;
 }
 
+.planetSearch select {
+  margin-top: 10px;
+}
+
 fieldset {
   font-family: "Roboto", sans-serif;
   letter-spacing: 3px;
@@ -401,6 +398,29 @@ fieldset {
   margin: 5px;
 }
 
+.datesSearch .submitButton {
+  background: none;
+  border: 2px solid #f1fcfc;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 3px;
+  color: #f1fcfc;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+input,
+.submitButton {
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+}
+
+input:hover,
+input:focus,
+.submitButton:hover,
+.submitButton:focus {
+  background-color: rgba(64, 224, 208, 0.5);
+}
+
 .closestObjFlex,
 .dateSearchResults {
   padding-top: 5%;
@@ -415,31 +435,6 @@ fieldset {
   padding: 3% 0;
 }
 
-.speaceObjectFlex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.submitButton {
-  background: none;
-  border: 2px solid #f1fcfc;
-  font-family: "Roboto", sans-serif;
-  letter-spacing: 3px;
-  color: #f1fcfc;
-  padding: 5px 10px;
-  cursor: pointer;
-  -webkit-transition: background-color 0.5s ease;
-  transition: background-color 0.5s ease;
-}
-
-.submitButton:hover,
-.submitButton:focus {
-  background-color: rgba(64, 224, 208, 0.5);
-}
-
 footer {
   background: black;
   color: #f1fcfc;
@@ -447,15 +442,16 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 footer p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-align: center;
 }
 
@@ -482,6 +478,9 @@ footer .imgDiv {
   }
   header h2 {
     font-size: 1rem;
+  }
+  fieldset {
+    font-size: 1.3rem;
   }
   footer .imgDiv {
     width: 15%;

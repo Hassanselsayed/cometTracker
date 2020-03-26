@@ -1,5 +1,4 @@
-/* stripping styles */
-
+// stripping styles
 body,
 a,
 p,
@@ -29,8 +28,7 @@ a{
     text-decoration: none;
 }
 
-/* base styling */
-
+// base styling
 img{
     width: 100%;
     display: block;
@@ -52,7 +50,6 @@ body{
 }
 
 // header styles
-
 header{
     h1{
         @include primaryFont();
@@ -68,27 +65,19 @@ header{
         letter-spacing: 4px;
 
     }
-    @include centerFlex;
+    @include centerFlex();
     text-align: center;
     padding: 5%;
 }
 
-// main styles/alignment
-.planetSearchGrid{
-    display: grid;
-}
-
-
+// form styles
 .fieldsetFlex{
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: auto;
     grid-gap: 30px;
     min-height: 100%;
-
 }
-
-// form styles
 
 h3 {
     color: $primaryWhite;
@@ -101,9 +90,8 @@ h3 {
 
 p{
     color: $primaryWhite;
-    @include secondaryFont;
+    @include secondaryFont();
     @include fontSize(15);
-
 }
 
 .pInfo{
@@ -116,8 +104,13 @@ p{
 
 .planetSearchTextBox,
 .datesSearchTextBox{
-    @include centerFlex;
+    @include centerFlex();
     flex-direction: column;
+}
+.planetSearch {
+    select {
+        margin-top: 10px;
+    }
 }
 
 fieldset{
@@ -126,6 +119,7 @@ fieldset{
     border: 2px solid $accent;
     color: $primaryWhite;
 }
+
 .datesSearch {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -136,13 +130,33 @@ fieldset{
         text-align: center;
         margin: 5px;
     }
+    .submitButton {
+        background: none;
+        border: 2px solid $primaryWhite;
+        @include secondaryFont();
+        color: $primaryWhite;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
 }
+
+input,
+.submitButton {
+    transition: background-color 0.5s ease;
+}
+input:hover,
+input:focus,
+.submitButton:hover,
+.submitButton:focus {
+    background-color: rgba(64, 224, 208, 0.5);
+}   
+
+
 // dynamic elements' styles
 .closestObjFlex,
 .dateSearchResults {
     padding-top: 5%;
     ul {
-        // width: fit-content;
         li{
             @include secondaryFont();
             @include fontSize(20);
@@ -152,34 +166,15 @@ fieldset{
     } 
 }
 
-.speaceObjectFlex{
-    display: flex;
-    justify-content: space-around;
-}
 
-.submitButton {
-    background: none;
-    border: 2px solid $primaryWhite;
-    @include secondaryFont();
-    color: $primaryWhite;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.5s ease;
-}
-.submitButton:hover,
-.submitButton:focus {
-    background-color: rgba(64, 224, 208, 0.5);
-}
-
+// footer styles
 footer{
     background: black;
     color: $primaryWhite;
     padding: 5px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    @include centerFlex();
     p{
-        @include fontSize(12);
+        @include fontSize(14);
         text-align: center;
     }
     .imgDiv{

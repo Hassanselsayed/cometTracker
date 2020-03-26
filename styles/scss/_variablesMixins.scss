@@ -6,7 +6,7 @@ $secondaryFont:'Roboto', sans-serif;
 
 $letterSpacing: 3px;
 
-// colour: Color Palette 169452
+// color: Color Palette 169452
 $accent: #40e0d0;
 $primaryColor: rgb(55, 42, 65);
 $primaryGrey: rgb(148, 145, 160);
@@ -20,7 +20,6 @@ $primaryWhite: #f1fcfc;
 
 // font
 @mixin fontSize($sizeValue){
-	// font-size: $sizeValue * 1px;
     font-size: ($sizeValue/10) * 1rem;
 }
 

@@ -25,8 +25,8 @@ cometApp.planetSelectListener = function() {
 };
 
 // collect user input date
-cometApp.$minDateInput = $('#min-date');
-cometApp.$maxDateInput = $('#max-date');
+cometApp.$minDateInput = $('#minDate');
+cometApp.$maxDateInput = $('#maxDate');
 
 // date form listener 
 cometApp.formListener = function(e){
